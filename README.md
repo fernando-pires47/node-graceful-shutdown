@@ -6,6 +6,7 @@
 * Docker
 * Kind
 * Kubectl
+* Node(run locally)
 
 # Install resources
 
@@ -68,10 +69,9 @@ http://localhost/health/ready
 
 ```
 
-### 5. Update the deployment version
+### 5. Increment the application version to trigger rolling update
 
 ```bash
-# Load Balancer
 kubectl set env deployment/my-node-app VERSION=V2
 ```
 
@@ -105,4 +105,13 @@ kubectl delete -f k8s/ingress-nginx.yaml -n default
 kind delete cluster --name kind
 
 ```
+
+## Check out my blog post for a deeper dive into the content
+https://piresfernando.com/blog/graceful-shutdown-node
+
+
+## License
+
+This application is available under the
+[MIT license](https://opensource.org/licenses/MIT).
 

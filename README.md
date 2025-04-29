@@ -1,5 +1,5 @@
-# Simple Graceful Shutdown example
-Simple application and Kubernetes resources to test rolling update behavior with graceful shutdown handling.
+# Graceful Shutdown example
+ Environment to test rolling update behavior with graceful shutdown handling.
 
 ## Dependencies
 

@@ -1,8 +1,8 @@
 version: '3.9'
 
 services:
-  rabbitmq-service:
+  my-node:
     build:
       dockerfile: Dockerfile.prod
-    container_name: rabbitmq-service
+    container_name: my-node
 

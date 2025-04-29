@@ -57,7 +57,7 @@ kubectl get ingress --namespace=default
 
 ```
 
-### 4. Access URL 
+### 4. Access URL to track behavior
 
 ```bash
 # To check current version
@@ -81,12 +81,14 @@ kubectl set env deployment/my-node-app VERSION=V2
 kubectl get pods -l app=my-node-app
 ```
 
-### 7. Expected behaviors
-
-#### Pod
 ![](/images/pods.png)
 
-#### Log
+### 7. Check the pod terminating log
+
+```bash
+kubectl logs -f <pod-name>
+```
+
 ![](/images/log.png)
 
 # Uninstall

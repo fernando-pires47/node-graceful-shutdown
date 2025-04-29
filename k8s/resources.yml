@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-node-app
+spec:
+  replicas: 3
+  selector:  
+    matchLabels:
+      app: my-node-app
+  template:
+    metadata:
+      labels:  
+        app: my-node-app
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: my-node-app
+        image: eopires/node-graceful-shutdown:1.0.0
+        env:
+          - name: VERSION
+            value: "V1"
+          - name: GRACEFUL_TIMEOUT
+            value: "60"
+        ports:
+        - containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health/live
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-node-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-node-app
+  ports:
+  - port: 3000

@@ -1,0 +1,28 @@
+{
+  "name": "node-graceful-shutdown",
+  "version": "1.0.0",
+  "description": "Graceful Shutdown example",
+  "author": "Fernando Pires",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "scripts": {
+    "start:docker": "docker compose -f docker-compose.dev.yml up --build",
+    "start:docker-prod": "docker compose -f docker-compose.prod.yml up --build",
+    "build": "tsc",
+    "start": "npm run dist/index.js",
+    "push:docker": "node ./pushDocker.js",
+    "start:dev": "nodemon --verbose --delay 500ms --watch 'src/' --exec 'ts-node src/index.ts' -e ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.1",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
+  }
+}
